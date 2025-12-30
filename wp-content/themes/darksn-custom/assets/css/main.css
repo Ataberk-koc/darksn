@@ -1,3 +1,12 @@
+.about-image-animate {
+  opacity: 0;
+  transform: translateX(-60px) scale(0.96);
+  transition: opacity 0.9s cubic-bezier(.4,2,.6,1), transform 0.9s cubic-bezier(.4,2,.6,1);
+}
+.about-image-animate.show {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
 .about-counter-on-image {
   position: absolute;
   right: 12px;

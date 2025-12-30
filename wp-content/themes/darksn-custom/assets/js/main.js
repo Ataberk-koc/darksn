@@ -36,8 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // About alanı animasyonları (başlık, metin, özellikler)
+  // About alanı animasyonları (başlık, metin, özellikler, görsel)
   const aboutAnimElements = document.querySelectorAll('.about-animate');
+  const aboutImage = document.querySelector('.about-image-animate');
+  const observerOptions = { threshold: 0.2 };
   if (aboutAnimElements.length > 0) {
     const aboutObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -45,8 +47,18 @@ document.addEventListener("DOMContentLoaded", () => {
           entry.target.classList.add('show');
         }
       });
-    }, { threshold: 0.2 });
+    }, observerOptions);
     aboutAnimElements.forEach(el => aboutObserver.observe(el));
+  }
+  if (aboutImage) {
+    const imgObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          aboutImage.classList.add('show');
+        }
+      });
+    }, observerOptions);
+    imgObserver.observe(aboutImage);
   }
 });
 const observer = new IntersectionObserver(entries => {

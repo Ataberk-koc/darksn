@@ -45,7 +45,7 @@
     <div class="container">
         <div class="about-wrapper">
             
-            <div class="about-image">
+            <div class="about-image about-image-animate">
                 <?php 
                     $about_img = get_theme_mod('about_image', get_template_directory_uri() . '/assets/images/about-default.jpg'); 
                 ?>
