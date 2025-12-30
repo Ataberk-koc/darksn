@@ -110,3 +110,59 @@ function darksn_slider_customizer( $wp_customize ) {
     ) );
 }
 add_action( 'customize_register', 'darksn_slider_customizer' );
+
+function darksn_about_customizer( $wp_customize ) {
+    // 1. Yeni Bölüm Oluştur
+    $wp_customize->add_section( 'darksn_about_section', array(
+        'title'       => __( 'Hakkımızda Alanı', 'darksn' ),
+        'description' => 'Ana sayfadaki "Biz Kimiz" alanını buradan düzenleyebilirsiniz.',
+        'priority'    => 35,
+    ) );
+
+    // --- Başlık Ayarı ---
+    $wp_customize->add_setting( 'about_title', array('default' => 'Biz Kimiz?') );
+    $wp_customize->add_control( 'about_title', array(
+        'label'    => __( 'Başlık', 'darksn' ),
+        'section'  => 'darksn_about_section',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'about_feature_1', array('default' => 'Profesyonel Kadro') );
+    $wp_customize->add_control( 'about_feature_1', array(
+        'label'    => __( 'Özellik Maddesi 1', 'darksn' ),
+        'section'  => 'darksn_about_section',
+        'type'     => 'text',
+    ) );
+
+    // --- Özellik Maddesi 2 ---
+    $wp_customize->add_setting( 'about_feature_2', array('default' => '7/24 Destek') );
+    $wp_customize->add_control( 'about_feature_2', array(
+        'label'    => __( 'Özellik Maddesi 2', 'darksn' ),
+        'section'  => 'darksn_about_section',
+        'type'     => 'text',
+    ) );
+
+    // --- Özellik Maddesi 3 ---
+    $wp_customize->add_setting( 'about_feature_3', array('default' => 'Son Teknoloji') );
+    $wp_customize->add_control( 'about_feature_3', array(
+        'label'    => __( 'Özellik Maddesi 3', 'darksn' ),
+        'section'  => 'darksn_about_section',
+        'type'     => 'text',
+    ) );
+    
+    // --- İçerik Yazısı Ayarı ---
+    $wp_customize->add_setting( 'about_text', array('default' => 'Buraya firmanız hakkında detaylı yazı gelecek...') );
+    $wp_customize->add_control( 'about_text', array(
+        'label'    => __( 'İçerik Metni', 'darksn' ),
+        'section'  => 'darksn_about_section',
+        'type'     => 'textarea',
+    ) );
+
+    // --- Görsel Ayarı ---
+    $wp_customize->add_setting( 'about_image' );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'about_image', array(
+        'label'    => __( 'Hakkımızda Görseli', 'darksn' ),
+        'section'  => 'darksn_about_section',
+    ) ) );
+}
+add_action( 'customize_register', 'darksn_about_customizer' );
