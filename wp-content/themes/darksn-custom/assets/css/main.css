@@ -414,6 +414,7 @@ position: fixed;
   position: relative;
   display: flex;
   align-items: center; /* İçeriği dikey ortala */
+  justify-content: flex-start; /* İçeriği sola it */
 }
 
 /* Resmi Karartma Katmanı (Overlay) */
@@ -430,6 +431,10 @@ position: fixed;
   z-index: 2; /* Overlay'in üstüne çıkar */
   color: #fff;
   max-width: 800px;
+  margin-left: 60px;
+  margin-right: auto;
+  padding-left: 40px;
+  text-align: left;
 }
 
 .hero-slider-area .slide-content h2 {

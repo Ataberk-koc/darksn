@@ -52,31 +52,61 @@ function darksn_menu_setup() {
 }
 add_action( 'after_setup_theme', 'darksn_menu_setup' );
 
+function darksn_slider_customizer( $wp_customize ) {
+    // 1. Yeni Bir Bölüm Oluştur (Slider Ayarları)
+    $wp_customize->add_section( 'darksn_slider_section', array(
+        'title'       => __( 'Ana Sayfa Slider', 'darksn' ),
+        'description' => 'Slider resimlerini ve yazılarını buradan değiştirebilirsiniz.',
+        'priority'    => 30,
+    ) );
 
-// Slider için özel yazı tipi
-function darksn_register_slider_post_type() {
-  $labels = array(
-    'name'               => 'Slider',
-    'singular_name'      => 'Slider',
-    'add_new'            => 'Yeni Slider',
-    'add_new_item'       => 'Yeni Slider Ekle',
-    'edit_item'          => 'Sliderı Düzenle',
-    'new_item'           => 'Yeni Slider',
-    'all_items'          => 'Tüm Sliderlar',
-    'view_item'          => 'Sliderı Görüntüle',
-    'search_items'       => 'Slider Ara',
-    'not_found'          => 'Slider bulunamadı',
-    'not_found_in_trash' => 'Çöp kutusunda slider yok',
-    'menu_name'          => 'Slider'
-  );
-  $args = array(
-    'labels'             => $labels,
-    'public'             => true,
-    'has_archive'        => false,
-    'menu_icon'          => 'dashicons-images-alt2',
-    'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
-    'show_in_rest'       => true
-  );
-  register_post_type('slider', $args);
+    // --- SLIDE 1 AYARLARI ---
+    
+    // Resim Yükleme Alanı
+    $wp_customize->add_setting( 'slide1_image' ); // Ayar ismi
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'slide1_image', array(
+        'label'    => __( '1. Slayt Resmi', 'darksn' ),
+        'section'  => 'darksn_slider_section',
+        'settings' => 'slide1_image',
+    ) ) );
+
+    // Başlık Yazısı Alanı
+    $wp_customize->add_setting( 'slide1_title', array('default' => 'Varsayılan Başlık') );
+    $wp_customize->add_control( 'slide1_title', array(
+        'label'    => __( '1. Slayt Başlığı', 'darksn' ),
+        'section'  => 'darksn_slider_section',
+        'type'     => 'text',
+    ) );
+    
+    // --- SLIDE 1 İÇİN AÇIKLAMA AYARI ---
+    $wp_customize->add_setting( 'slide1_desc', array('default' => 'Varsayılan açıklama metni...') );
+    $wp_customize->add_control( 'slide1_desc', array(
+        'label'    => __( '1. Slayt Açıklaması', 'darksn' ),
+        'section'  => 'darksn_slider_section',
+        'type'     => 'textarea', // Uzun yazı yazılabilsin diye
+    ) );
+
+    // --- SLIDE 2 İÇİN AÇIKLAMA AYARI ---
+    $wp_customize->add_setting( 'slide2_desc', array('default' => 'İkinci slayt açıklaması...') );
+    $wp_customize->add_control( 'slide2_desc', array(
+        'label'    => __( '2. Slayt Açıklaması', 'darksn' ),
+        'section'  => 'darksn_slider_section',
+        'type'     => 'textarea',
+    ) );
+    // --- SLIDE 2 AYARLARI (İstersen çoğaltabilirsin) ---
+    
+    $wp_customize->add_setting( 'slide2_image' );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'slide2_image', array(
+        'label'    => __( '2. Slayt Resmi', 'darksn' ),
+        'section'  => 'darksn_slider_section',
+        'settings' => 'slide2_image',
+    ) ) );
+
+    $wp_customize->add_setting( 'slide2_title', array('default' => 'İkinci Başlık') );
+    $wp_customize->add_control( 'slide2_title', array(
+        'label'    => __( '2. Slayt Başlığı', 'darksn' ),
+        'section'  => 'darksn_slider_section',
+        'type'     => 'text',
+    ) );
 }
-add_action('init', 'darksn_register_slider_post_type');
+add_action( 'customize_register', 'darksn_slider_customizer' );
