@@ -1,3 +1,105 @@
+/* Google Fonts: Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, .main-nav .menu li a {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Menü animasyonları */
+.main-nav .menu li {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1);
+}
+.main-nav.open .menu li {
+  opacity: 1;
+  transform: translateY(0);
+}
+.main-nav.open .menu li {
+  /* Sıralı animasyon gecikmesi */
+  transition-delay: calc(var(--i, 0) * 0.07s + 0.15s);
+}
+
+/* Hamburger menüde animasyonlu giriş için index atanacak */
+/* Hamburger Menü Stilleri */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  margin: 4px 0;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(.4,2,.6,1);
+}
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    max-width: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+    background: linear-gradient(120deg, #181818 0%, #232526 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition:
+      opacity 0.35s cubic-bezier(.4,2,.6,1),
+      transform 0.35s cubic-bezier(.4,2,.6,1),
+      background-position 0.8s cubic-bezier(.4,2,.6,1);
+  }
+  .main-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    background-position: 100% 50%;
+  }
+  .main-nav .menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 24px 0;
+    align-items: center;
+  }
+  .main-nav .menu li {
+    margin: 0 0 12px 0;
+  }
+  .main-nav .menu li:last-child {
+    margin-bottom: 0;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .site-header .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
 /* Logo boyutu ve hizalama düzeltmesi */
 .site-header .logo {
   display: flex;

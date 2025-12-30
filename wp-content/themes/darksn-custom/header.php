@@ -41,8 +41,15 @@
       ?>
     </div>
 
+    <!-- Hamburger Menü Butonu (Mobilde) -->
+    <button class="hamburger" aria-label="Menüyü Aç/Kapat" aria-expanded="false" aria-controls="main-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <!-- MENÜ -->
-    <nav class="main-nav">
+    <nav class="main-nav" id="main-menu">
       <?php
         wp_nav_menu([
           'theme_location' => 'main_menu',
