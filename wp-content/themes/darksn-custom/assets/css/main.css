@@ -1,3 +1,15 @@
+/* Logo boyutu ve hizalama düzeltmesi */
+.site-header .logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.custom-logo {
+  max-width: 180px;
+  height: auto;
+  display: block;
+}
 /* Hero Section Styles */
 .hero-section {
   min-height: 100vh;

@@ -21,3 +21,14 @@ add_filter('pre_get_document_title', function () {
     }
     return get_the_title() . ' | ' . get_bloginfo('name');
 });
+// Özel logo desteği
+function darksn_custom_logo_setup() {
+    $defaults = array(
+        'height'      => 100, // Logonun varsayılan yüksekliği
+        'width'       => 400, // Logonun varsayılan genişliği
+        'flex-height' => true,
+        'flex-width'  => true,
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'darksn_custom_logo_setup' );
