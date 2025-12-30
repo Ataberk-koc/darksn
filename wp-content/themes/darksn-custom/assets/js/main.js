@@ -47,3 +47,23 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.service-card').forEach(card => {
   observer.observe(card);
 });
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper(".myHeroSwiper", {
+        slidesPerView: 1,
+        loop: true, // Sonsuz döngü
+        effect: "fade", // Geçiş efekti (fade veya slide yapabilirsiniz)
+        speed: 1000, // Geçiş hızı
+        autoplay: {
+            delay: 5000, // 5 saniyede bir değişsin
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+});

@@ -386,3 +386,99 @@ position: fixed;
 .main-nav {
   transition: all 0.4s ease;
 }
+/* Slider Genel Alanı */
+.hero-slider-area {
+  width: 100vw;
+  height: 100vh; /* Ekranın tamamını kaplasın */
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px; /* Daha az boşluk bırak */
+  z-index: 1;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+}
+
+.hero-slider-area .swiper, 
+.hero-slider-area .swiper-wrapper, 
+.hero-slider-area .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slider-area .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center; /* İçeriği dikey ortala */
+}
+
+/* Resmi Karartma Katmanı (Overlay) */
+.hero-slider-area .swiper-slide .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* %50 Siyah Filtre */
+  z-index: 1;
+}
+
+/* İçerik Kutusu */
+.hero-slider-area .slide-content {
+  position: relative;
+  z-index: 2; /* Overlay'in üstüne çıkar */
+  color: #fff;
+  max-width: 800px;
+}
+
+.hero-slider-area .slide-content h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.hero-slider-area .slide-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.hero-slider-area .slide-content .btn {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* Animasyon Tetikleyici (Active Slide Olduğunda) */
+.hero-slider-area .swiper-slide-active .slide-content h2,
+.hero-slider-area .swiper-slide-active .slide-content p,
+.hero-slider-area .swiper-slide-active .slide-content .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gecikmeler (Sırayla gelmesi için) */
+.delay-100 { transition-delay: 0.2s !important; }
+.delay-200 { transition-delay: 0.4s !important; }
+
+/* Buton Tasarımı */
+.btn-primary {
+    background-color: #e50914; /* Kırmızı buton */
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Swiper Oklarını Beyaz Yap */
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;
+}

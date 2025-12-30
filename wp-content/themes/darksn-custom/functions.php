@@ -4,6 +4,18 @@
 function darksn_scripts() {
   wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css');
   wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
+ // Mevcut stil dosyanız
+    wp_enqueue_style( 'darksn-style', get_stylesheet_uri() );
+
+    // 1. Swiper CSS (CDN üzerinden)
+    wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
+
+    // 2. Swiper JS (CDN üzerinden)
+    wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true );
+
+    // 3. Kendi JS dosyanız (Slider'ı burada başlatacağız)
+    // Eğer dosyanızın adı farklıysa düzeltin (örneğin assets/js/main.js)
+    wp_enqueue_script( 'darksn-main-js', get_template_directory_uri() . '/assets/js/main.js', array('swiper-js'), null, true );
 }
 add_action('wp_enqueue_scripts', 'darksn_scripts');
 
@@ -39,6 +51,7 @@ function darksn_menu_setup() {
     ) );
 }
 add_action( 'after_setup_theme', 'darksn_menu_setup' );
+
 
 // Slider için özel yazı tipi
 function darksn_register_slider_post_type() {
