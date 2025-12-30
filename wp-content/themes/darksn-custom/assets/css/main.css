@@ -6,18 +6,21 @@ body, .main-nav .menu li a {
 }
 
 /* Menü animasyonları */
-.main-nav .menu li {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1);
-}
-.main-nav.open .menu li {
-  opacity: 1;
-  transform: translateY(0);
-}
-.main-nav.open .menu li {
-  /* Sıralı animasyon gecikmesi */
-  transition-delay: calc(var(--i, 0) * 0.07s + 0.15s);
+/* Menü animasyonları sadece mobilde aktif */
+@media (max-width: 900px) {
+  .main-nav .menu li {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1);
+  }
+  .main-nav.open .menu li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .main-nav.open .menu li {
+    /* Sıralı animasyon gecikmesi */
+    transition-delay: calc(var(--i, 0) * 0.07s + 0.15s);
+  }
 }
 
 /* Hamburger menüde animasyonlu giriş için index atanacak */
